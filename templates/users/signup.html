@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} - Signup{% endblock %}
+
+{% block content %}
+
+    <form class="well" id="signup-form" action="{% url 'signup' account_type %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>{{ account_type|capfirst }} Informations</legend>
+            {{ form.as_p }}
+        </fieldset>
+        <button type="submit" class="btn btn-block btn-success">Sign Up</button>
+        <a href="{% url 'login' %}">Already have an {{ account_type }} account? Click here to login.</a>
+    </form>
+{% endblock %}

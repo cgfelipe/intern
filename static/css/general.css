@@ -1,0 +1,10 @@
+#index-buttons a {
+    width: 450px;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.errorlist ul {
+    list-style-type: none;
+}

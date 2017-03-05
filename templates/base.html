@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Intern{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/general.css' %}" />
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/general.js' %}"></script>
+    {% block static_imports %}{% endblock %}
+</head>
+<body>
+    <div class="container">
+        {% block messages %}
+            {% if messages %}
+                {% for msg in messages %}
+                    <div class="alert alert-success alert-dismissable">
+                        {{ msg }}
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+        {% endblock %}
+        {% block content %}{% endblock %}
+        <br><br><br><br>
+    </div>
+
+
+    <footer id="footer" class="text-center navbar-fixed-bottom">
+        <hr>
+        <p>&copy; 2017 - Made with <i class="fa fa-heart" style="color: red;"></i> by Corporation</p>
+    </footer>
+</body>
+</html>

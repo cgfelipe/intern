@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div id="index-buttons" class="well text-center">
+        <div class="btn-group-vertical btn-group-lg" role="group" aria-label="Which one are you?">
+            <a href="{% url 'signup' 'student' %}" class="btn btn-success">I'm a student</a>
+            <a href="{% url 'signup' 'school' %}" class="btn btn-primary">I'm a school</a>
+            <a href="{% url 'signup' 'company' %}" class="btn btn-danger">I'm a company</a>
+        </div>
+    </div>
+
+{% endblock %}
