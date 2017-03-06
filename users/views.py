@@ -48,6 +48,6 @@ class LoginView(View):
             user = auth.authenticate(username=form.cleaned_data['email'], password=form.cleaned_data['password'])
             auth.login(request, user)
             messages.success(request, 'Welcome, {0}!'.format(form.cleaned_data['email']))
-            return render(request, 'jobs/index.html', locals())
+            return HttpResponseRedirect('/jobs/')
         else:
             return render(request, 'users/login.html', locals())

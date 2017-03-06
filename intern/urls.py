@@ -21,7 +21,9 @@ import jobs.views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', users.views.home, name='index'),
-    url(r'signup/(\w+)/$', users.views.SignupView.as_view(), name='signup'),
-    url(r'login/$', users.views.LoginView.as_view(), name='login'),
-    url(r'jobs/$', jobs.views.IndexView.as_view(), name='index')
+    url(r'^signup/(\w+)/$', users.views.SignupView.as_view(), name='signup'),
+    url(r'^login/$', users.views.LoginView.as_view(), name='login'),
+    url(r'^jobs/$', jobs.views.IndexView.as_view(), name='index'),
+    url(r'^jobs/new_post/$', jobs.views.JobPostView.as_view(), name='new_job_post'),
+    url(r'^jobs/new_offer/$', jobs.views.JobAnnouncementView.as_view(), name='new_job_offer')
 ]

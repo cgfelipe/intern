@@ -69,10 +69,16 @@ class JobPost(models.Model):
     description = models.TextField()
     base_salary = models.DecimalField(decimal_places=2, max_digits=10)
 
+    def __str__(self):
+        return self.name
+
 
 class JobOffer(models.Model):
     company = models.ForeignKey(Company)
     post = models.ForeignKey(JobPost)
+
+    def __str__(self):
+        return '{0} at {1}'.format(self.post, self.company)
 
 
 class School(Entity):

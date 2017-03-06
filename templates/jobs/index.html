@@ -19,7 +19,8 @@
             <ul class="dropdown-menu">
               <li><a href="#section41">Jobs list</a></li>
               {% if request.user.is_company %}
-                <li><a href="#section42">Create a job announcement</a></li>
+                  <li><a href="#job-post">Register a job post</a></li>
+                  <li><a href="#job-announcement">Create a job announcement</a></li>
               {% endif %}
             </ul>
           </li>
@@ -35,5 +36,29 @@
     </div>
   </div>
 </nav>
+    <br><br><br><br><br>
+{% if request.user.is_company %}
+    <div id="job-post" class="well">
+        <form method="post" action="{% url 'new_job_post' %}">
+            {% csrf_token %}
+            <fieldset>
+                <legend>Job Post Registration</legend>
+                {{ job_post_form.as_p }}
+            </fieldset>
+            <button type="submit" class="btn btn-block btn-success">Register Job Post</button>
+        </form>
+    </div>
+    <br>
+    <div id="job-announcement" class="well">
+        <form method="post" action="{% url 'new_job_offer' %}">
+            {% csrf_token %}
+            <fieldset>
+                <legend>Internship Offer Registration</legend>
+                {{ job_announcement_form.as_p }}
+            </fieldset>
+            <button type="submit" class="btn btn-block btn-success">Create Internship Offer</button>
+        </form>
+    </div>
+{% endif %}
 
-{% endblock %}
+{% endblock %}s
