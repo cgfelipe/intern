@@ -2,7 +2,7 @@
 {% load custom_tags %}
 
 {% block content %}
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top" style="border-bottom: 1px solid black;">
   <div class="container-fluid">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -17,7 +17,7 @@
         <ul class="nav navbar-nav">
           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Jobs <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#section41">Jobs list</a></li>
+              <li><a href="#job-list">Jobs list</a></li>
               {% if request.user.is_company %}
                   <li><a href="#job-post">Register a job post</a></li>
                   <li><a href="#job-announcement">Create a job announcement</a></li>
@@ -37,6 +37,24 @@
   </div>
 </nav>
     <br><br><br><br><br>
+<div id="job-list" class="well">
+    <fieldset>
+        <legend>Internship offers</legend>
+        <ul class="list-group">
+            {% for job in job_list %}
+                <li class="list-group-item">
+                    {{ job }}
+                    {% if request.user.is_student %}
+                        <a href="#" class="pull-right" style="color: black">
+                            <i class="glyphicon glyphicon-plus"></i>
+                        </a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </fieldset>
+</div>
+s
 {% if request.user.is_company %}
     <div id="job-post" class="well">
         <form method="post" action="{% url 'new_job_post' %}">
